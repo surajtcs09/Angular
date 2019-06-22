@@ -1,0 +1,44 @@
+1. Angular code can be tested using Jasmine and Karma. 
+2. Configuration in test.ts file decides about the component which needs to be tested.
+const context = require.context('./', true, /\.spec\.ts$/);
+./ means it will run all the test cases in the project. 
+./<particular-folder-name-inside-app>  -- It will run all the test case inside that folder. 
+
+It becomes easy to run the test cases when project is very big and there are various test cases.
+Making the changes in the test cases and seeing the effect becomes easy. It takes less time to run the testcases 
+
+3. Key to run the test cases: 
+ng test 
+
+package.json contains all the commands under script. 
+"test": "ng test"   --> It means that npm run test would work for ng test 
+
+Instead of "test" we could write any custom words. 
+
+4. Test cases ouput is not in organized manner. 
+For that we can use "karma-mocha-reporter"
+
+    To run it, follow following commands: 
+
+    Step1: >  npm install karma-mocha-reporter --save-dev
+    This will install karma-mocha-reporter
+
+    Step2: Make change in karma.conf.js file
+    Under plugins: 
+    Add  require('karma-mocha-reporter')
+    plugins: [
+          require('karma-jasmine'),
+          require('karma-chrome-launcher'),
+          require('karma-jasmine-html-reporter'),
+          require('karma-coverage-istanbul-reporter'),
+          require('karma-mocha-reporter'),
+          require('@angular-devkit/build-angular/plugins/karma')
+          //require('karma-mocha-reporter')
+        ]
+    Step3: 
+    And under reporters, add: 'mocha'
+     reporters: ['mocha','progress', 'kjhtml']
+     
+5.      
+ 
+ 
